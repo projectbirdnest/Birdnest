@@ -24,15 +24,15 @@ public class Main extends Activity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-
         // Database Test RW
         MySQLite db = new MySQLite(this);
 
 
         //db.onUpgrade(,0,1);
-        db.addBird(new Bird("BirdA","MY","Image1","Sound1"));
-        db.addBird(new Bird("BirdB","MY","Image2","Sound2"));
-        db.addBird(new Bird("BirdC","SG","Image3","Sound3"));
+        db.addBird(new Bird("Science1","Family Name1","Local Name1","Malay Name1","Family1","Location1","Image1","Sound1"));
+        db.addBird(new Bird("Science2","Family Name2","Local Name2","Malay Name2","Family2","Location2","Image2","Sound2"));
+        db.addBird(new Bird("Science3","Family Name3","Local Name3","Malay Name3","Family3","Location3","Image3","Sound3"));
+
 
         // Database Modules Test
         List<Bird> list1 = db.getAllBird();
@@ -40,7 +40,7 @@ public class Main extends Activity {
         List <Bird> list3 = db.getBird("Image20", MySQLite.BIRD_IMAGES);
 
         // Clear Test DB
-        db.cleanDB();
+        //db.cleanDB();
 
     }
 

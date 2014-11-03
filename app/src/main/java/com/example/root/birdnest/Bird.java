@@ -4,44 +4,73 @@ package com.example.root.birdnest;
 public class Bird {
 
     public int id;
-    public String name;
-    public String location;
-    public String image;
-    public String sound;
+    public String ScientificName, FamilyName, LocalName, MalayName, Family, Location, Image, Sound;
 
     public Bird(){}
 
-    public Bird(String name, String location, String image, String Sound){
+    // Bird Overload
+    public Bird(String SciName, String FN, String LN, String MN, String family, String location, String Img, String Sound ){
         super();
-        this.name = name;
-        this.location = location;
-        this.image = image;
-        this.sound = Sound;
+        this.ScientificName = SciName;
+        this.FamilyName = FN;
+        this.LocalName = LN;
+        this.MalayName = MN;
+        this.Family = family;
+        this.Location =location;
+        this.Image = Img;
+        this.Sound = Sound;
 
     }
 
-    public void setName(String name){
-        this.name = name;
-    }
-    public void setId(int id){
+    public void setId(int id) {
         this.id = id;
     }
+
+    public void setName(String ScientificName){
+        this.ScientificName = ScientificName;
+    }
+
+    public void setFamilyName(String FamilyName){
+        this.FamilyName = FamilyName;
+    }
+
+    public void setMalayName(String malayName) {
+        MalayName = malayName;
+    }
+
+    public void setScientificName(String scientificName) {
+        ScientificName = scientificName;
+    }
+
+    public void setFamily(String family) {
+        Family = family;
+    }
+
+    public void setLocalName(String localName) {
+        LocalName = localName;
+    }
+
     public void setLocation(String location){
-        this.location = location;
+        this.Location = location;
     }
     public void setImage(String image){
-        this.image = image;
+        this.Image = image;
     }
     public void setSound(String sound){
-        this.sound = sound;
+        this.Sound = sound;
     }
 
     @Override
+
+    // For Logging Purpose
     public String toString() {
         return "Bird [id]:" + this.id+
-                " [name]: "+this.name+
-                " [location]: " + this.location +
-                " [Image]: " + this.image +
-                " [Sound]: " + this.sound;
+                " [Sci]: "+this.ScientificName+
+                " [FN]: " + this.FamilyName +
+                " [LN]: " + this.LocalName +
+                " [MN]: " + this.MalayName+
+                " [Family]" + this.Family+
+                " [Image]"+ this.Image+
+                " [Sound]"+ this.Sound;
     }
 }

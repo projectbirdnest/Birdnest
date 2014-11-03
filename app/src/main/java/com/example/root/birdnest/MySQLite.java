@@ -19,16 +19,21 @@ public class MySQLite extends SQLiteOpenHelper {
 
     // Defining DB
     // Btable
-    // | id | name  | location  | Bird Images   | Bird Sound    |
-    // |  0 | Bird1 |   MY      |               |               |
-    // |  1 | Bird2 |   SG      |               |               |
+    // | id | Sci Name  | Family Name | Local Name | Malay Name | Location | Family  | Image   | Sound |
+    // |  0 |           |             |            |            |          |         |         |
+    // |  1 |           |             |            |            |          |         |         |
     //
 
     public static final String TABLE_NAME = "BTable";
     public static final String ID = "id";
-    public static final String COLUMN_NAME_ENTRY_ID = "name";
-    public static final String BIRD_IMAGES = "image";
-    public static final String BIRD_SOUND = "sound";
+    public static final String SCIENTIFIC_NAME = "SciName";
+    public static final String FAMILY_NAME = "FamilyName";
+    public static final String LOCAL_NAME = "LocalName";
+    public static final String MALAY_NAME = "MalayName";
+    public static final String FAMILY = "Family";
+    public static final String LOCATION = "Location";
+    public static final String BIRD_IMAGES = "Image";
+    public static final String BIRD_SOUND = "Sound";
 
     public static final String COLUMN_NAME_TITLE = "location";
 
@@ -37,8 +42,12 @@ public class MySQLite extends SQLiteOpenHelper {
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + MySQLite.TABLE_NAME + " (" +
                     MySQLite.ID + " INTEGER PRIMARY KEY," +
-                    MySQLite.COLUMN_NAME_ENTRY_ID + TEXT_TYPE + COMMA_SEP +
-                    MySQLite.COLUMN_NAME_TITLE + TEXT_TYPE + COMMA_SEP +
+                    MySQLite.SCIENTIFIC_NAME + TEXT_TYPE + COMMA_SEP +
+                    MySQLite.FAMILY_NAME + TEXT_TYPE + COMMA_SEP +
+                    MySQLite.LOCAL_NAME + TEXT_TYPE + COMMA_SEP +
+                    MySQLite.MALAY_NAME + TEXT_TYPE + COMMA_SEP +
+                    MySQLite.FAMILY + TEXT_TYPE + COMMA_SEP +
+                    MySQLite.LOCATION + TEXT_TYPE + COMMA_SEP +
                     MySQLite.BIRD_IMAGES + TEXT_TYPE + COMMA_SEP+
                     MySQLite.BIRD_SOUND+ TEXT_TYPE+
 
@@ -60,24 +69,28 @@ public class MySQLite extends SQLiteOpenHelper {
 
         db.execSQL("DROP TABLE IF EXISTS "+MySQLite.TABLE_NAME);
 
-
-        // create fresh books table
         this.onCreate(db);
     }
 
 
     // Add Database
     public void addBird(Bird bird){
+        // Notify that new Bird is successfully added
         Log.d("addBird", bird.toString());
+
+        // Select database
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(MySQLite.COLUMN_NAME_ENTRY_ID, bird.name);
-        values.put(MySQLite.COLUMN_NAME_TITLE, bird.location);
-        values.put(MySQLite.BIRD_IMAGES, bird.image);
-        values.put(MySQLite.BIRD_SOUND, bird.sound);
 
+        // Add content into database
+        values.put(MySQLite.SCIENTIFIC_NAME, bird.ScientificName);
+        values.put(MySQLite.FAMILY_NAME, bird.FamilyName);
+        values.put(MySQLite.LOCAL_NAME, bird.LocalName);
+        values.put(MySQLite.MALAY_NAME, bird.MalayName);
+        values.put(MySQLite.FAMILY, bird.Family);
+        values.put(MySQLite.BIRD_IMAGES, bird.Image);
+        values.put(MySQLite.BIRD_SOUND, bird.Sound);
         db.insert(TABLE_NAME,null,values);
-
 
         db.close();
     }
