@@ -16,7 +16,8 @@ public class Main extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.deleteDatabase(MySQLite.TABLE_NAME);
+        //super.deleteDatabase(MySQLite.TABLE_NAME_FAMILY);
+        //super.deleteDatabase(MySQLite.TABLE_NAME_SPECIES);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
@@ -28,19 +29,23 @@ public class Main extends Activity {
         MySQLite db = new MySQLite(this);
 
 
-        //db.onUpgrade(,0,1);
-        db.addBird(new Bird("Science1","Family Name1","Local Name1","Malay Name1","Family1","Location1","Image1","Sound1"));
-        db.addBird(new Bird("Science2","Family Name2","Local Name2","Malay Name2","Family2","Location2","Image2","Sound2"));
-        db.addBird(new Bird("Science3","Family Name3","Local Name3","Malay Name3","Family3","Location3","Image3","Sound3"));
+        // Add Birds in 1 line with overloading
+        // Alternatively Bird Class can be initialize first
 
+        db.addBird(new Bird("Science1","FirstName1","LastName1","Local Name1","Family Name1","Location1","Image1","Sound1"));
+        db.addBird(new Bird("Science2","FirstName2","LastName2","Local Name2","Family Name2","Location2","Image2","Sound2"));
+        db.addBird(new Bird("Science3","FirstName3","LastName3","Local Name3","Family Name3","Location3","Image3","Sound3"));
+        db.addFamily(new BirdFamily("Family1"));
+        db.addFamily(new BirdFamily("Family2"));
 
         // Database Modules Test
         List<Bird> list1 = db.getAllBird();
         List <Bird> list2 = db.getBird("Image2",MySQLite.BIRD_IMAGES);
         List <Bird> list3 = db.getBird("Image20", MySQLite.BIRD_IMAGES);
+        List<BirdFamily> list4 = db.getAllBirdFamily();
 
         // Clear Test DB
-        //db.cleanDB();
+        db.cleanDB();
 
     }
 

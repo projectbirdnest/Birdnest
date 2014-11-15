@@ -4,24 +4,26 @@ package com.example.root.birdnest;
 public class Bird {
 
     public int id;
-    public String ScientificName, FamilyName, LocalName, MalayName, Family, Location, Image, Sound;
+    public String ScientificName, FirstName, FamilyName, LastName, LocalName, MalayName, Location, Image, Sound;
 
     public Bird(){}
 
     // Bird Overload
-    public Bird(String SciName, String FN, String LN, String MN, String family, String location, String Img, String Sound ){
+    public Bird(String SciName, String FirstN, String LastN, String LocalN, String FamilyN, String location, String Img, String Sound ){
         super();
         this.ScientificName = SciName;
-        this.FamilyName = FN;
-        this.LocalName = LN;
-        this.MalayName = MN;
-        this.Family = family;
+        this.FirstName = FirstN;
+        this.FamilyName = FamilyN;
+        this.LocalName = LocalN;
+        this.LastName = LastN;
+        this.FirstName = FirstN;
         this.Location =location;
         this.Image = Img;
         this.Sound = Sound;
 
     }
 
+    // Update Methods
     public void setId(int id) {
         this.id = id;
     }
@@ -30,8 +32,16 @@ public class Bird {
         this.ScientificName = ScientificName;
     }
 
-    public void setFamilyName(String FamilyName){
-        this.FamilyName = FamilyName;
+    public void setLastName(String lastName) {
+        LastName = lastName;
+    }
+
+    public void setFirstName(String firstName){
+        this.FirstName = FirstName;
+    }
+
+    public void setFamilyName(String familyName) {
+        FamilyName = familyName;
     }
 
     public void setMalayName(String malayName) {
@@ -42,9 +52,6 @@ public class Bird {
         ScientificName = scientificName;
     }
 
-    public void setFamily(String family) {
-        Family = family;
-    }
 
     public void setLocalName(String localName) {
         LocalName = localName;
@@ -69,7 +76,7 @@ public class Bird {
                 " [FN]: " + this.FamilyName +
                 " [LN]: " + this.LocalName +
                 " [MN]: " + this.MalayName+
-                " [Family]" + this.Family+
+                " [Family]" + this.FamilyName+
                 " [Image]"+ this.Image+
                 " [Sound]"+ this.Sound;
     }
